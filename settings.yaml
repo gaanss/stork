@@ -26,6 +26,7 @@ farming:
   concurrent_accounts: 100  # Number of accounts to farm simultaneously (affects server load and performance)
   rotation_hours: 24  # Time interval in hours between account rotations in the farming queue
   delay_between_accounts: 5  # Delay in seconds between each account start during initialization
+  concurrent_auth: 10  # Number of parallel authorization processes during farming (limits the number of simultaneous auth operations)
 
 # Registration configuration
 # Settings for the automated account registration process
