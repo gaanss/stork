@@ -1,0 +1,75 @@
+# Logging configuration
+# Controls how detailed the logs will be and what information is recorded
+logging:
+  level: INFO  # Controls log verbosity: DEBUG (most verbose), INFO, WARNING, ERROR, CRITICAL (least verbose)
+  log_requests: false  # When true, logs API request and response details for troubleshooting API interactions
+
+# Database configuration
+# PostgreSQL database connection settings for storing account data and statistics
+database:
+  host: 0.0.0.0  # Database server hostname or IP address
+  port: 5432  # PostgreSQL server port
+  name: stork  # Database name
+  user: postgres  # Database username
+  password: 12345  # Database password
+
+# AWS Cognito configuration
+# Authentication settings for Stork AWS Cognito service
+cognito:
+  region: ap-northeast-1  # AWS region where the Cognito user pool is located
+  client_id: 5msns4n49hmg3dftp2tp1t2iuh  # Cognito app client ID for API authentication
+  user_pool_id: ap-northeast-1_M22I44OpC  # Cognito user pool ID
+
+# Farming configuration
+# Settings for the automated farming process
+farming:
+  concurrent_accounts: 100  # Number of accounts to farm simultaneously (affects server load and performance)
+  rotation_hours: 24  # Time interval in hours between account rotations in the farming queue
+  delay_between_accounts: 5  # Delay in seconds between each account start during initialization
+
+# Registration configuration
+# Settings for the automated account registration process
+registration:
+  concurrent_registrations: 5  # Number of parallel registration processes (affects registration speed)
+  referral:
+    mode: "random"  # Referral code selection mode: "random" - uses random codes from database, "static" - uses a fixed code
+    static_code: "7A5NK0GPK5"  # The specific referral code to use when mode is set to "static"
+
+# Email configuration
+# Settings for email-based account verification and processing
+email:
+  imap_mode: standard  # Email processing mode: "standard" (individual accounts), "single" (one account for all), "redirect" (forwarded emails)
+  imap_server: imap.gmail.com  # Default IMAP server when not specified by domain
+  imap_port: 993  # IMAP server port, 993 is standard for SSL connections
+  imap_ssl: true  # Whether to use secure SSL connection for IMAP
+  wait_seconds: 15  # Number of seconds to wait for verification emails to arrive
+  attempt_pause: 5  # Pause duration in seconds between email check attempts
+  max_attempts: 5  # Maximum number of attempts to check for verification emails before giving up
+
+  # Domain-specific IMAP settings
+  # Custom IMAP server configurations for different email domains
+  domain_servers:
+    gmail.com:
+      server: imap.gmail.com  # IMAP server for Gmail accounts
+    outlook.com:
+      server: outlook.office365.com  # IMAP server for Outlook accounts
+    hotmail.com:
+      server: outlook.office365.com  # IMAP server for Hotmail accounts
+    yahoo.com:
+      server: imap.mail.yahoo.com  # IMAP server for Yahoo accounts
+    # Add other domains as needed
+
+# Proxy configuration
+# Settings for proxy usage to avoid IP-based rate limiting
+proxy:
+  enabled: true  # Whether to use proxies for API requests
+  rotate_on_waf: true  # Automatically rotate proxy when WAF (Web Application Firewall) block is detected
+  rotate_on_connection_error: true  # Automatically rotate proxy when connection errors occur
+
+# Error handling
+# Settings for retry logic when errors occur
+error_handling:
+  max_retries: 5  # Maximum number of immediate retry attempts per cycle
+  retry_delay_seconds: 2  # Delay in seconds between retry attempts
+  retry_long_delay_minutes: 5  # Longer delay in minutes between retry cycles
+  retry_cycles: 5  # Maximum number of retry cycles before giving up 
