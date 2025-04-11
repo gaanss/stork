@@ -1,4 +1,4 @@
-# Stork Network 🚀
+# Stork v1.0.0 🚀
 
 ![Stork](https://img.shields.io/badge/Stork-Automation-blue)
 
@@ -7,6 +7,8 @@
 > To purchase, contact via Telegram: [@gans_developer](https://t.me/gans_developer)
 
 Stork is an automation tool for managing accounts registration and farming on the Stork platform.
+
+![Interface](interface.png)
 
 ## Features ✨
 
