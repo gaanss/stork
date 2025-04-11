@@ -7,11 +7,11 @@ logging:
 # Database configuration
 # PostgreSQL database connection settings for storing account data and statistics
 database:
-  host: 0.0.0.0  # Database server hostname or IP address
+  host: 91.107.237.34  # Database server hostname or IP address
   port: 5432  # PostgreSQL server port
-  name: stork  # Database name
+  name: stork4  # Database name
   user: postgres  # Database username
-  password: 12345  # Database password
+  password: 152452  # Database password
 
 # AWS Cognito configuration
 # Authentication settings for Stork AWS Cognito service
@@ -23,15 +23,23 @@ cognito:
 # Farming configuration
 # Settings for the automated farming process
 farming:
-  concurrent_accounts: 100  # Number of accounts to farm simultaneously (affects server load and performance)
+  concurrent_accounts: 2000  # Number of accounts to farm simultaneously (affects server load and performance)
   rotation_hours: 24  # Time interval in hours between account rotations in the farming queue
-  delay_between_accounts: 5  # Delay in seconds between each account start during initialization
-  concurrent_auth: 10  # Number of parallel authorization processes during farming (limits the number of simultaneous auth operations)
+  delay_between_accounts: 3  # Delay in seconds between each account start during initialization
+
+  delay_between_auth: 2  # Delay in seconds between authorization attempts for accounts
+  concurrent_auth: 1  # Number of concurrent authorizations to process in batch mode
+  concurrent_validations: 10  # Number of concurrent price validations
+  concurrent_token_refreshes: 5  # Number of concurrent token refresh operations
+  
+  # Нові параметри для системи фармінгу з незалежними воркерами
+  validation_workers: 50  # Кількість одночасних валідацій цін
+  token_refresh_workers: 20  # Кількість одночасних оновлень токенів
 
 # Registration configuration
 # Settings for the automated account registration process
 registration:
-  concurrent_registrations: 5  # Number of parallel registration processes (affects registration speed)
+  concurrent_registrations: 2  # Number of parallel registration processes (affects registration speed)
   referral:
     mode: "random"  # Referral code selection mode: "random" - uses random codes from database, "static" - uses a fixed code
     static_code: "7A5NK0GPK5"  # The specific referral code to use when mode is set to "static"
@@ -58,6 +66,8 @@ email:
       server: outlook.office365.com  # IMAP server for Hotmail accounts
     yahoo.com:
       server: imap.mail.yahoo.com  # IMAP server for Yahoo accounts
+    liteinbox.com:
+      server: mail.adm.tools  # IMAP server for LiteInbox accounts
     # Add other domains as needed
 
 # Proxy configuration
