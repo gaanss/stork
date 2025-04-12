@@ -4,7 +4,7 @@
 
 > **Note:** This is paid software. Each running instance costs $150. 
 > You can ask me to provide a license for 1 day for testing. 
-> To purchase, contact via Telegram: [@gans_developer](https://t.me/gans_developer)
+> To purchase, contact via Telegram: [@gans](https://t.me/gans_developer)
 
 Stork is an automation tool for managing accounts registration and farming on the Stork platform.
 
@@ -184,4 +184,4 @@ Neon provides a generous free tier with:
 
 ## Support 📞
 
-For support, please contact the developer via Telegram: [@gans_developer](https://t.me/gans_developer) 
+For support, please contact the developer via Telegram: [@gans](https://t.me/gans_developer) 
