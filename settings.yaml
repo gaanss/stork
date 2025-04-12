@@ -7,11 +7,11 @@ logging:
 # Database configuration
 # PostgreSQL database connection settings for storing account data and statistics
 database:
-  host: 91.107.237.34  # Database server hostname or IP address
+  host: 1.7.7.0  # Database server hostname or IP address
   port: 5432  # PostgreSQL server port
-  name: stork4  # Database name
+  name: stork  # Database name
   user: postgres  # Database username
-  password: 152452  # Database password
+  password: 12345  # Database password
 
 # AWS Cognito configuration
 # Authentication settings for Stork AWS Cognito service
