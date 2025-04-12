@@ -45,9 +45,9 @@ email:
   max_attempts: 5  # Maximum number of attempts to check for verification emails before giving up
   
   # Redirect mode configuration (used when imap_mode is set to "redirect")
-  redirect_email: "alexkucher93@gmail.com"  # Email address for the redirect account where all verification emails are forwarded
-  redirect_password: "gozdfrqmaubjwnok"  # Password for the redirect account
-  redirect_server: ""  # Custom IMAP server for redirect account (if empty, will use server based on email domain)
+  redirect_email: "test@gmail.com"  # Email address for the redirect account where all verification emails are forwarded
+  redirect_password: "123456"  # Password for the redirect account
+  redirect_server: "imap.gmail.com"  # Custom IMAP server for redirect account (if empty, will use server based on email domain)
 
   # Domain-specific IMAP settings
   domain_servers:
