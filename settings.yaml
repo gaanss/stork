@@ -2,16 +2,16 @@
 # Controls how detailed the logs will be and what information is recorded
 logging:
   level: INFO  # Controls log verbosity: DEBUG (most verbose), INFO, WARNING, ERROR, CRITICAL (least verbose)
-  log_requests: false  # When true, logs API request and response details for troubleshooting API interactions
+  log_requests: true  # When true, logs API request and response details for troubleshooting API interactions
 
 # Database configuration
 # PostgreSQL database connection settings for storing account data and statistics
 database:
-  host: 1.7.7.0  # Database server hostname or IP address
+  host: 0.0.0.0  # Database server hostname or IP address
   port: 5432  # PostgreSQL server port
   name: stork  # Database name
   user: postgres  # Database username
-  password: 12345  # Database password
+  password: 123456  # Database password
 
 # AWS Cognito configuration
 # Authentication settings for Stork AWS Cognito service
@@ -27,10 +27,11 @@ farming:
   rotation_hours: 24  # Time interval in hours between account rotations in the farming queue
   delay_between_accounts: 3  # Delay in seconds between each account start during initialization
 
-  delay_between_auth: 2  # Delay in seconds between authorization attempts for accounts
-  concurrent_auth: 1  # Number of concurrent authorizations to process in batch mode
-  concurrent_validations: 10  # Number of concurrent price validations
-  concurrent_token_refreshes: 5  # Number of concurrent token refresh operations
+  delay_between_auth: 5  # Delay in seconds between authorization attempts for accounts
+  concurrent_auth: 5  # Number of concurrent authorizations to process in batch mode
+  concurrent_validations: 50  # Number of concurrent price validations
+  concurrent_token_refreshes: 20  # Number of concurrent token refresh operations
+  concurrent_update_stats: 5  # Number of concurrent account statistics update operations
   
   # Нові параметри для системи фармінгу з незалежними воркерами
   validation_workers: 50  # Кількість одночасних валідацій цін
