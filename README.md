@@ -2,7 +2,7 @@
 
 ![Stork](https://img.shields.io/badge/Stork-Automation-blue)
 
-> **Note:** This is paid software. Each running instance costs $150. 
+> **Note:** This is paid software. 
 > You can ask me to provide a license for 1 day for testing. 
 > To purchase, contact via Telegram: [@gans](https://t.me/gans_developer)
 
