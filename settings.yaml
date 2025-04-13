@@ -1,8 +1,8 @@
 # Logging configuration
 # Controls how detailed the logs will be and what information is recorded
 logging:
-  level: DEBUG  # Controls log verbosity: DEBUG (most verbose), INFO, WARNING, ERROR, CRITICAL (least verbose)
-  log_requests: true  # When true, logs API request and response details for troubleshooting API interactions
+  level: INFO  # Controls log verbosity: DEBUG (most verbose), INFO, WARNING, ERROR, CRITICAL (least verbose)
+  log_requests: false  # When true, logs API request and response details for troubleshooting API interactions
 
 # Database configuration
 # PostgreSQL database connection settings for storing account data and statistics
