@@ -1,10 +1,10 @@
-# Stork 🚀
+# Stork v1.0.0 🚀
 
 ![Stork](https://img.shields.io/badge/Stork-Automation-blue)
 
-> **Note:** This is paid software. 
+> **Note:** This is paid software. Each running instance costs $150. 
 > You can ask me to provide a license for 1 day for testing. 
-> To purchase, contact via Telegram: [@gans](https://t.me/gans_developer)
+> To purchase, contact via Telegram: [@gans_developer](https://t.me/gans_developer)
 
 Stork is an automation tool for managing accounts registration and farming on the Stork platform.
 
@@ -65,9 +65,13 @@ registration:
 
 1. `data/registration.txt` - list of accounts for registration:
    ```
-   email:password
-   email:password
+   email:password:imappassword
+   email:password:imappassword
    ```
+   Where:
+   - `email` - email address for registration
+   - `password` - password for Stork account
+   - `imappassword` - password for email IMAP access (can be different from account password)
 
 2. `data/farming.txt` - list of accounts for farming:
    ```
@@ -127,6 +131,11 @@ For account registration, you need access to the email accounts for verification
 - **Single Mode**: One email account is used for all verifications
 - **Redirect Mode**: All verification emails are forwarded to a single account
 
+The application now supports separate IMAP passwords for email verification. This is useful when:
+- Your email account uses an app-specific password for IMAP access
+- You have different passwords for email and Stork accounts
+- You use 2FA for your email account and need an application password
+
 Configure the IMAP settings in `settings.yaml` under the `email` section.
 
 ### Proxy Support 🌐
@@ -184,4 +193,4 @@ Neon provides a generous free tier with:
 
 ## Support 📞
 
-For support, please contact the developer via Telegram: [@gans](https://t.me/gans_developer) 
+For support, please contact the developer via Telegram: [@gans_developer](https://t.me/gans_developer) 
