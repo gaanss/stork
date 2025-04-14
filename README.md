@@ -1,4 +1,4 @@
-# Stork v1.0.0 🚀
+# Stork 🚀
 
 ![Stork](https://img.shields.io/badge/Stork-Automation-blue)
 
