@@ -50,7 +50,6 @@ email:
   wait_seconds: 10  # Number of seconds to wait for verification emails to arrive
   attempt_pause: 5  # Pause duration in seconds between email check attempts
   max_attempts: 5  # Maximum number of attempts to check for verification emails before giving up
-  use_proxy: false  # Whether to use proxies for IMAP connections
   
   # Redirect mode configuration (used when imap_mode is set to "redirect")
   redirect_email: "test@gmail.com"  # Email address for the redirect account where all verification emails are forwarded
