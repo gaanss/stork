@@ -12,6 +12,8 @@ database:
   name: stork  # Database name
   user: postgres  # Database username
   password: 123456  # Database password
+  min_connections: 50
+  max_connections: 1000
 
 # Authentication configuration
 auth:
