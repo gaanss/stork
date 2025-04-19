@@ -18,6 +18,7 @@ Stork is an automation tool for managing accounts registration and farming on th
 - 🔄 Multi-threaded processing
 - 🌐 Proxy support with rotation on errors
 - 📝 Comprehensive logging system
+- 🔑 Password reset automation with progress tracking
 
 ## Requirements 📋
 
@@ -58,6 +59,10 @@ registration:
   referral:
     mode: "random"
     static_code: "your_referral_code"
+    
+# Password reset configuration
+password_reset:
+  concurrent_operations: 5 # Number of parallel password reset processes
 ```
 
 ### Data Files Format
@@ -83,6 +88,19 @@ registration:
    username:password@host:port
    username:password@host:port
    ```
+
+4. `data/change_password.txt` - list of accounts for password reset:
+   ```
+   email:imappassword:newpassword
+   ```
+   Or in redirect mode:
+   ```
+   email:newpassword
+   ```
+   Where:
+   - `email` - email address for the account
+   - `imappassword` - password for email IMAP access (not needed in redirect mode)
+   - `newpassword` - new password to set for the account
 
 ## License System 🔑
 
@@ -118,6 +136,7 @@ If you don't have a license key, please contact the developer.
 
 - **Account Registration** - Register new accounts on the Stork platform
 - **Account Farming** - Run farming operations with multiple accounts
+- **Password Reset** - Automatically reset passwords for multiple accounts
 - **Update Statistics** - Update account statistics in the database
 - **Export Statistics** - Export account statistics to CSV file
 - **Account Management** - Manage accounts in the application
@@ -182,6 +201,44 @@ Neon provides a generous free tier with:
 - 3 GiB of storage
 - Auto-scaling compute
 - No credit card required
+
+## Password Reset Functionality 🔑
+
+The application includes an automated password reset system that allows you to change passwords for multiple accounts in bulk:
+
+### Features:
+- Concurrent processing of multiple accounts
+- Progress tracking (showing current account/total accounts)
+- Support for different IMAP modes (standard, redirect)
+- Automatic verification via email
+- Result logging to files
+
+### How to use:
+1. Create a file `data/change_password.txt` with accounts in format:
+   ```
+   email:imappassword:newpassword
+   ```
+   Or in redirect mode:
+   ```
+   email:newpassword
+   ```
+
+2. Configure settings in `settings.yaml`:
+   ```yaml
+   password_reset:
+     concurrent_operations: 5  # Number of accounts to process in parallel
+   
+   email:
+     imap_mode: "standard"  # or "redirect" if using a single email for all accounts
+     redirect_email: ""     # Email to use in redirect mode
+     redirect_password: ""  # Password for redirect email
+   ```
+
+3. Run the password reset function from the application interface
+
+### Result files:
+- `results/successful_reset.txt` - Contains accounts with successfully changed passwords
+- `results/failed_reset.txt` - Contains accounts where password reset failed with error details
 
 ## Troubleshooting 🔍
 
