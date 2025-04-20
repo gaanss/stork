@@ -26,7 +26,7 @@ farming:
   token_refresh_workers: 10  # Number of simultaneous token refreshes
   update_stats_on_refresh: false  # Whether to update statistics during token refresh (may cause statistics overwrite)
   validation_delay: 3  # Base delay in seconds between account validations, increases exponentially for each account
-  token_refresh_delay_range: [3, 45]  # Min and max seconds to delay before token refresh
+  token_refresh_delay_range: [1, 3]  # Min and max seconds to delay before token refresh
 
 # Statistics update configuration
 stats_update:
