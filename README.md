@@ -12,8 +12,6 @@
 > **Note:** This is paid software. 
 > To purchase, contact via Telegram: [@gaansss](https://t.me/gaansss)
 
-Stork is an automation tool for managing accounts registration and farming on the Stork platform.
-
 ![Interface](interface.png)
 
 ## Features ✨
