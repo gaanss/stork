@@ -11,7 +11,6 @@ Stork is an automation tool for managing accounts registration and farming on th
 
 ## Features ✨
 
-- 🔐 Secure account authentication via AWS Cognito
 - 👤 Automated account registration with referral code support
 - 🤖 Account farming with rotation and multiple concurrent sessions
 - 📊 Statistics tracking and export functionality
