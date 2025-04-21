@@ -9,10 +9,6 @@
   </a>
 </p>
 
-<p align="center">
-  <img src="interface.png" alt="Interface Screenshot" />
-</p>
-
 > **Note:** This is paid software. 
 > To purchase, contact via Telegram: [@gaansss](https://t.me/gaansss)
 
