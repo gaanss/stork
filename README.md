@@ -1,17 +1,21 @@
 # Stork 🚀
 
-![Stork](https://img.shields.io/badge/Stork-Automation-blue)
+<p align="center">
+  <a href="https://t.me/gans_software">
+    <img src="https://img.shields.io/badge/Telegram-Channel-blue?style=for-the-badge&logo=telegram" alt="Telegram Channel">
+  </a>
+  <a href="https://t.me/ganssoftwarechat">
+    <img src="https://img.shields.io/badge/Telegram-Chat-blue?style=for-the-badge&logo=telegram" alt="Telegram Chat">
+  </a>
+</p>
 
 > **Note:** This is paid software. 
 > To purchase, contact via Telegram: [@gaansss](https://t.me/gaansss)
-
-Stork is an automation tool for managing accounts registration and farming on the Stork platform.
 
 ![Interface](interface.png)
 
 ## Features ✨
 
-- 🔐 Secure account authentication via AWS Cognito
 - 👤 Automated account registration with referral code support
 - 🤖 Account farming with rotation and multiple concurrent sessions
 - 📊 Statistics tracking and export functionality
