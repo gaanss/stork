@@ -1,89 +1,103 @@
 # Logging configuration
-# Controls how detailed the logs will be and what information is recorded
 logging:
-  level: INFO  # Controls log verbosity: DEBUG (most verbose), INFO, WARNING, ERROR, CRITICAL (least verbose)
-  log_requests: false  # When true, logs API request and response details for troubleshooting API interactions
+  level: INFO
+  log_requests: false
 
 # Database configuration
-# PostgreSQL database connection settings for storing account data and statistics
 database:
-  host: 0.0.0.0  # Database server hostname or IP address
-  port: 5432  # PostgreSQL server port
-  name: stork  # Database name
-  user: postgres  # Database username
-  password: 123456  # Database password
-  min_connections: 1
-  max_connections: 200
+  host: 0.0.0.0
+  port: 5432
+  name: stork
+  user: postgres
+  password: 123456
+  min_connections: 5
+  max_connections: 50
 
 # Authentication configuration
 auth:
   concurrent_operations: 1  # Number of parallel authorizations in batch mode
-  delay_range: [15, 25]  # Min and max seconds to delay before authentication
+  delay_range: [5, 17] 
 
 # Farming configuration
 farming:
-  validation_workers: 10  # Number of simultaneous price validations
-  token_refresh_workers: 10  # Number of simultaneous token refreshes
+  validation_workers: 150  # Number of simultaneous price validations
+  token_refresh_workers: 150  # Number of simultaneous token refreshes
   update_stats_on_refresh: false  # Whether to update statistics during token refresh (may cause statistics overwrite)
-  validation_delay: 3  # Base delay in seconds between account validations, increases exponentially for each account
+  validation_delay: 1  # Base delay in seconds between account validations, increases exponentially for each account
+  validation_interval: 300  # Interval in seconds between consecutive validations for each account
   token_refresh_delay_range: [1, 3]  # Min and max seconds to delay before token refresh
 
 # Statistics update configuration
 stats_update:
-  concurrent_operations: 1  # Number of parallel account statistics updates
-  delay_range: [15, 20]  # Min and max seconds to delay before updating statistics
+  concurrent_operations: 10
+  delay_range: [5, 15]  
 
 # Password reset configuration
 password_reset:
-  concurrent_operations: 1  # Number of parallel password reset operations
-  delay_range: [15, 20]  # Min and max seconds to delay before password reset operations
+  concurrent_operations: 8
+  delay_range: [5, 45]
 
 # Registration configuration
 registration:
-  concurrent_operations: 1  # Number of parallel registration processes (affects registration speed)
-  delay_range: [15, 20]  # Min and max seconds to delay before registration
+  concurrent_operations: 1
+  delay_range: [15, 20]
   referral:
-    mode: "static"  # Referral code selection mode: "random" - uses random codes from database, "static" - uses a fixed code
+    mode: "random"  # Referral code selection mode: "random" - uses random codes from database, "static" - uses a fixed code
     static_code: "7A5NK0GPK5"  # The specific referral code to use when mode is set to "static"
 
 # Email configuration
 email:
   imap_mode: standard  # Email processing mode: "standard" (individual accounts),"redirect" (forwarded emails)
   imap_server: mail.adm.tools  # Default IMAP server when not specified by domain
-  wait_seconds: 10  # Number of seconds to wait for verification emails to arrive
+  wait_seconds: 30  # Number of seconds to wait for verification emails to arrive
+  imap_port: 993
+  imap_ssl: false
   attempt_pause: 5  # Pause duration in seconds between email check attempts
   max_attempts: 5  # Maximum number of attempts to check for verification emails before giving up
-  use_proxy_for_imap: false  # Whether to use proxies for IMAP connections
   
   # Redirect mode configuration (used when imap_mode is set to "redirect")
   redirect_email: "test@gmail.com"  # Email address for the redirect account where all verification emails are forwarded
-  redirect_password: "wegrwgerhgerg"  # Password for the redirect account
-  redirect_server: ""  # Custom IMAP server for redirect account (if empty, will use server based on email domain)
+  redirect_password: "123456"  # Password for the redirect account
+  redirect_server: "imap.gmail.com"  # Custom IMAP server for redirect account (if empty, will use server based on email domain)
 
   # Domain-specific IMAP settings
   domain_servers:
     gmail.com:
-      server: imap.gmail.com  # IMAP server for Gmail accounts
+      server: imap.gmail.com 
     outlook.com:
-      server: outlook.office365.com  # IMAP server for Outlook accounts
+      server: outlook.office365.com
     hotmail.com:
-      server: outlook.office365.com  # IMAP server for Hotmail accounts
+      server: outlook.office365.com
     yahoo.com:
-      server: imap.mail.yahoo.com  # IMAP server for Yahoo accounts
+      server: imap.mail.yahoo.com
     liteinbox.com:
-      server: mail.adm.tools  # IMAP server for LiteInbox accounts
+      server: mail.adm.tools
+    onet.pl:
+      server: imap.poczta.onet.pl
+    gmx.de:
+      server: imap.gmx.net
     # Add other domains as needed
 
 # Proxy configuration
 proxy:
-  enabled: true  # Whether to use proxies for API requests
-  rotate_on_waf: true  # Automatically rotate proxy when WAF (Web Application Firewall) block is detected
-  rotate_on_connection_error: true  # Automatically rotate proxy when connection errors occur
-  max_rotation_attempts: 3  # Number of times to try rotating proxy on connection error
+  enabled: true 
+  rotate_on_waf: true
+  rotate_on_connection_error: true
+  max_rotation_attempts: 3
 
 # Settings for retry logic when errors occur
 error_handling:
-  max_retries: 5  # Maximum number of immediate retry attempts per cycle
-  retry_delay_seconds: 2  # Delay in seconds between retry attempts
-  retry_long_delay_minutes: 5  # Longer delay in minutes between retry cycles
-  retry_cycles: 5  # Maximum number of retry cycles before giving up 
+  max_retries: 3
+  retry_delay_seconds: 1
+  retry_long_delay_minutes: 5
+  retry_cycles: 5
+
+# CAPTCHA solver configuration
+captcha:
+  # Solver service name: anticaptcha, 2captcha, capsolver, turnstilesolver, solvium
+  service: "2captcha"
+  # API key for the solver service
+  api_key: "key"
+  page_url: "https://app.stork.network/login?redirect_uri=https%3A%2F%2Fknnliglhgkmlblppdejchidfihjnockl.chromiumapp.org%2F"
+  sitekey: "0x4AAAAAABeJe36Casyk4XUJ"
+  turnstile_solver_url: "http://0.0.0.0:5000"
